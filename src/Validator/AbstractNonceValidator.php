@@ -24,13 +24,13 @@ abstract class AbstractNonceValidator extends AbstractValidatorBase
     {
         if (!$subject instanceof NonceInterface) {
             return [
-                $this->__('Subject is not a nonce instance.')
+                $this->__('Subject is not a nonce instance.'),
             ];
         }
 
         if (!$this->_verifyNonce($subject)) {
             return [
-                $this->__('Subject nonce instance is not valid, or is expired.')
+                $this->__('Subject nonce instance is not valid, or is expired.'),
             ];
         }
 

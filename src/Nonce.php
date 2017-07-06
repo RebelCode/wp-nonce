@@ -14,7 +14,7 @@ class Nonce extends AbstractNonce implements NonceInterface
      *
      * @since [*next-version*]
      *
-     * @param string $id The ID of the nonce.
+     * @param string      $id   The ID of the nonce.
      * @param string|null $code The nonce code.
      */
     public function __construct($id, $code)
