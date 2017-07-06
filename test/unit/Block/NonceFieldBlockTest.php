@@ -107,4 +107,25 @@ class NonceFieldBlockTest extends TestCase
         $this->assertContains(sprintf('name="%s"', $fieldName), $rendered);
         $this->assertNotContains('value="dev/referer"', $rendered);
     }
+
+    /**
+     * Tests if the block can be cast into a rendered string of the field.
+     *
+     * @since [*next-version*]
+     */
+    public function testCanBeCastToString()
+    {
+        $id        = 'my-nonce';
+        $code      = \wp_create_nonce($id);
+        $fieldName = 'my-field';
+        $nonce     = $this->createNonce($id, $code);
+        $subject   = new NonceFieldBlock($nonce, $fieldName, true);
+
+        $casted = (string) $subject;
+
+        $this->assertInternalType('string', $casted);
+        $this->assertContains(sprintf('value="%s"', $code), $casted);
+        $this->assertContains(sprintf('name="%s"', $fieldName), $casted);
+        $this->assertContains('value="dev/referer"', $casted);
+    }
 }
