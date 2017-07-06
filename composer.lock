@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d04a1db9ef1a31518019ce19612c3f2d",
+    "content-hash": "3763a17421277611887ed806367ac0c7",
     "packages": [
         {
             "name": "dhii/block-interface",
@@ -93,16 +93,16 @@
         },
         {
             "name": "dhii/factory-interface",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/factory-interface.git",
-                "reference": "9f98cbcbcda1bec17f263c3653067667697a5bc6"
+                "reference": "0f1c1ea23cd192ef52a4f554512edcca7ce3e571"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/factory-interface/zipball/9f98cbcbcda1bec17f263c3653067667697a5bc6",
-                "reference": "9f98cbcbcda1bec17f263c3653067667697a5bc6",
+                "url": "https://api.github.com/repos/Dhii/factory-interface/zipball/0f1c1ea23cd192ef52a4f554512edcca7ce3e571",
+                "reference": "0f1c1ea23cd192ef52a4f554512edcca7ce3e571",
                 "shasum": ""
             },
             "require": {
@@ -131,7 +131,7 @@
                     "email": "development@dhii.co"
                 }
             ],
-            "time": "2017-04-02 11:27:33"
+            "time": "2017-06-19 14:11:26"
         },
         {
             "name": "dhii/i18n-helper-base",
@@ -506,7 +506,7 @@
                 }
             ],
             "description": "A default PHP CS Fixer config implementation",
-            "time": "2016-09-03T14:20:46+00:00"
+            "time": "2016-09-03 14:20:46"
         },
         {
             "name": "doctrine/instantiator",
