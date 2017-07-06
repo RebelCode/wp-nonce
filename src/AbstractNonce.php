@@ -23,7 +23,7 @@ abstract class AbstractNonce
      *
      * @since [*next-version*]
      *
-     * @var string|null
+     * @var string
      */
     protected $code;
 
@@ -60,7 +60,7 @@ abstract class AbstractNonce
      *
      * @since [*next-version*]
      *
-     * @return null|string
+     * @return string
      */
     protected function _getCode()
     {
@@ -72,7 +72,7 @@ abstract class AbstractNonce
      *
      * @since [*next-version*]
      *
-     * @param string|null $code The new nonce code.
+     * @param string $code The new nonce code.
      *
      * @return $this
      */
