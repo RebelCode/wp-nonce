@@ -13,6 +13,13 @@ use Xpmock\TestCase;
 class NonceFactoryTest extends TestCase
 {
     /**
+     * The class name of the nonce class to use for testing.
+     *
+     * @since [*next-version*]
+     */
+    const NONCE_CLASSNAME = 'RebelCode\\WordPress\\Nonce\\NonceInterface';
+
+    /**
      * Tests whether a valid instance can be created.
      *
      * @since [*next-version*]
@@ -39,7 +46,7 @@ class NonceFactoryTest extends TestCase
         $nonce   = $subject->make('my-nonce');
 
         $this->assertInstanceOf(
-            'RebelCode\\WordPress\\Nonce\\NonceInterface', $nonce,
+            static::NONCE_CLASSNAME, $nonce,
             'Created instance is not a valid nonce instance.'
         );
     }
