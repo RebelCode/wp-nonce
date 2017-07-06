@@ -3,7 +3,7 @@
 namespace RebelCode\WordPress\Nonce;
 
 /**
- * Basic functionality for something that has a nonce.
+ * Basic functionality for something that is aware of a nonce.
  *
  * @since [*next-version*]
  */
