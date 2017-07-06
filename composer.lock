@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ebc6a2d28425a2275a86b4a4cc5a0d95",
+    "content-hash": "68b455fd6df6b73975f2fc3fc35c3763",
     "packages": [
         {
             "name": "dhii/block-interface",
@@ -135,16 +135,16 @@
         },
         {
             "name": "dhii/i18n-helper-base",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/i18n-helper-base.git",
-                "reference": "cd97f092996666d8b422c523c59e7bcf9c3d5514"
+                "reference": "10c8b5db9fc8569df3d44c0a0b9329a0a1b7df7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/i18n-helper-base/zipball/cd97f092996666d8b422c523c59e7bcf9c3d5514",
-                "reference": "cd97f092996666d8b422c523c59e7bcf9c3d5514",
+                "url": "https://api.github.com/repos/Dhii/i18n-helper-base/zipball/10c8b5db9fc8569df3d44c0a0b9329a0a1b7df7c",
+                "reference": "10c8b5db9fc8569df3d44c0a0b9329a0a1b7df7c",
                 "shasum": ""
             },
             "require": {
@@ -152,9 +152,13 @@
             },
             "require-dev": {
                 "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/i18n-interface": "^0.1",
                 "dhii/php-cs-fixer-config": "dev-php-5.3",
                 "phpunit/phpunit": "^4.8",
                 "ptrofimov/xpmock": "^1.1"
+            },
+            "suggest": {
+                "dhii/i18n-interface": "Allows translating strings with context"
             },
             "type": "library",
             "autoload": {
@@ -173,7 +177,7 @@
                 }
             ],
             "description": "A base for internationalization consumers",
-            "time": "2017-06-16 13:24:55"
+            "time": "2017-06-16 14:40:54"
         },
         {
             "name": "dhii/stringable-interface",

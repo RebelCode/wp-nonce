@@ -16,7 +16,7 @@
         "rebelcode/wp-nonce-interface": "dev-task/initial-interfaces",
         "dhii/validation-interface": "^0.1.0",
         "dhii/validation-base": "^0.1.0",
-        "dhii/i18n-helper-base": "dev-master",
+        "dhii/i18n-helper-base": "dev-develop",
         "dhii/factory-interface": "dev-master",
         "dhii/block-interface": "dev-task/initial-interface"
     },
