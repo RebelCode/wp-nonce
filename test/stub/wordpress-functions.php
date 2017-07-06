@@ -32,3 +32,9 @@ function wp_referer_field() {
 
     return $referer_field;
 }
+
+function wp_verify_nonce($code, $id = -1) {
+    $expected = \wp_create_nonce($id);
+
+    return hash_equals($expected, $code);
+}
