@@ -17,22 +17,6 @@ function wp_create_nonce($nonceId)
     );
 }
 
-function wp_nonce_field( $action = -1, $name = "_wpnonce", $referer = true) {
-    $nonce_field = '<input type="hidden" id="' . $name . '" name="' . $name . '" value="' . wp_create_nonce($action) . '" />';
-
-    if ($referer) {
-        $nonce_field .= wp_referer_field();
-    }
-
-    return $nonce_field;
-}
-
-function wp_referer_field() {
-    $referer_field = '<input type="hidden" name="_wp_http_referer" value="dev/referer" />';
-
-    return $referer_field;
-}
-
 function wp_verify_nonce($code, $id = -1) {
     $expected = \wp_create_nonce($id);
 

@@ -34,6 +34,15 @@ abstract class AbstractNonceFieldBlock
     protected $useReferer;
 
     /**
+     * The referer field's HTML name attribute value.
+     *
+     * @since [*next-version*]
+     *
+     * @var string
+     */
+    protected $refererFieldName;
+
+    /**
      * Retrieves the HTML field's name attribute value.
      *
      * @since [*next-version*]
@@ -90,6 +99,34 @@ abstract class AbstractNonceFieldBlock
     }
 
     /**
+     * Retrieves the refer field HTML name attribute value.
+     *
+     * @since [*next-version*]
+     *
+     * @return string
+     */
+    protected function _getRefererFieldName()
+    {
+        return $this->refererFieldName;
+    }
+
+    /**
+     * Sets the refer field HTML name attribute value.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $refererFieldName The name attribute value for the referer field.
+     *
+     * @return $this
+     */
+    protected function _setRefererFieldName($refererFieldName)
+    {
+        $this->refererFieldName = $refererFieldName;
+
+        return $this;
+    }
+
+    /**
      * Renders the nonce field.
      *
      * @since [*next-version*]
@@ -98,10 +135,29 @@ abstract class AbstractNonceFieldBlock
      */
     protected function _render()
     {
-        return \wp_nonce_field(
-            $this->_getNonce()->getId(),
+        $output = sprintf(
+            '<input type="hidden" id="%1$s" name="%1$s" value="%2$s" />',
             $this->_getFieldName(),
-            $this->_getUseReferer()
+            $this->_getNonce()->getCode()
         );
+
+        if ($this->_getUseReferer()) {
+            $output .= sprintf(
+                '<input type="hidden" name="%1$s" value="%2$s" />',
+                $this->_getRefererFieldName(),
+                $this->_getRefererUrl()
+            );
+        }
+
+        return $output;
     }
+
+    /**
+     * Determines the URL to use as the referer URL.
+     *
+     * @since [*next-version*]
+     *
+     * @return string
+     */
+    abstract protected function _getRefererUrl();
 }
