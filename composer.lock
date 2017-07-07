@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3763a17421277611887ed806367ac0c7",
+    "content-hash": "05abab5fb9c5db50dc5f3710e3e13419",
     "packages": [
         {
             "name": "dhii/block-interface",
@@ -357,12 +357,12 @@
             "version": "dev-task/initial-interfaces",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RebelCodecom/wp-nonce-interface.git",
+                "url": "https://github.com/RebelCode/wp-nonce-interface.git",
                 "reference": "a51c5ea5cdfb29332e588711d9c4929b07c56759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCodecom/wp-nonce-interface/zipball/a51c5ea5cdfb29332e588711d9c4929b07c56759",
+                "url": "https://api.github.com/repos/RebelCode/wp-nonce-interface/zipball/a51c5ea5cdfb29332e588711d9c4929b07c56759",
                 "reference": "a51c5ea5cdfb29332e588711d9c4929b07c56759",
                 "shasum": ""
             },
