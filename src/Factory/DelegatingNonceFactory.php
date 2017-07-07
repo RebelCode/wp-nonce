@@ -69,7 +69,7 @@ class DelegatingNonceFactory extends AbstractNonceFactory implements FactoryInte
      *
      * @since [*next-version*]
      */
-    public function make($id, array $config = [])
+    public function make($id = '', $config = [])
     {
         return $this->_make($id, $config);
     }

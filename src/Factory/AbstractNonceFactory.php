@@ -16,12 +16,12 @@ abstract class AbstractNonceFactory
      *
      * @since [*next-version*]
      *
-     * @param string $id   The ID of the nonce to be generated.
+     * @param string $id   Optional ID for the nonce to be generated.
      * @param array  $args Optional additional arguments.
      *
      * @return NonceInterface
      */
-    protected function _make($id, $args = [])
+    protected function _make($id = '', $args = [])
     {
         $code = $this->_generateNonceCode($id);
 
