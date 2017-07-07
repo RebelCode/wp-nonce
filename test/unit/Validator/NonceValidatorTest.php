@@ -3,6 +3,7 @@
 namespace unit\Validator;
 
 use RebelCode\WordPress\Nonce\Validator\NonceValidator;
+use WP_Mock;
 use Xpmock\TestCase;
 
 /**
@@ -18,6 +19,26 @@ class NonceValidatorTest extends TestCase
      * @since [*next-version*]
      */
     const NONCE_CLASSNAME = 'RebelCode\\WordPress\\Nonce\\NonceInterface';
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function setUp()
+    {
+        WP_Mock::setUp();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function tearDown()
+    {
+        WP_Mock::tearDown();
+    }
 
     /**
      * Creates a nonce for testing purposes.
@@ -57,12 +78,19 @@ class NonceValidatorTest extends TestCase
      *
      * @since [*next-version*]
      */
-    public function testValidate()
+    public function testValidateOnVerifySuccess()
     {
-        $id    = 'my-nonce';
-        $code  = \wp_create_nonce($id);
-        $nonce = $this->createNonce($id, $code);
         $subject = new NonceValidator();
+
+        $id    = 'my-nonce';
+        $code  = '1234567890';
+        $nonce = $this->createNonce($id, $code);
+
+        WP_Mock::userFunction('wp_verify_nonce', [
+            'times'  => 1,
+            'args'   => [$code, $id],
+            'return' => true
+        ]);
 
         $subject->validate($nonce);
 
@@ -74,29 +102,22 @@ class NonceValidatorTest extends TestCase
      *
      * @since [*next-version*]
      */
-    public function testValidateInvalidCode()
+    public function testValidateOnVerifyFail()
     {
-        $id    = 'my-nonce';
-        $code  = 'foobar-code';
-        $nonce = $this->createNonce($id, $code);
         $subject = new NonceValidator();
+
+        $id    = 'my-nonce';
+        $code  = '1234567890';
+        $nonce = $this->createNonce($id, $code);
+
+        WP_Mock::userFunction('wp_verify_nonce', [
+            'times'  => 1,
+            'args'   => [$code, $id],
+            'return' => false
+        ]);
 
         $this->setExpectedException('Dhii\\Validation\\Exception\\ValidationFailedExceptionInterface');
 
         $subject->validate($nonce);
-    }
-
-    /**
-     * Tests the validation method with an invalid argument to ensure that validation fails.
-     *
-     * @since [*next-version*]
-     */
-    public function testValidateNotNonceInstance()
-    {
-        $subject = new NonceValidator();
-
-        $this->setExpectedException('Dhii\\Validation\\Exception\\ValidationFailedExceptionInterface');
-
-        $subject->validate('not-a-nonce');
     }
 }
