@@ -2,6 +2,7 @@
 
 namespace RebelCode\WordPress\Nonce\Factory\FuncTest;
 
+use WP_Mock;
 use Xpmock\TestCase;
 use RebelCode\WordPress\Nonce\Factory\AbstractNonceFactory;
 
@@ -25,6 +26,26 @@ class AbstractNonceFactoryTest extends TestCase
      * @since [*next-version*]
      */
     const NONCE_CLASSNAME = 'RebelCode\\WordPress\\Nonce\\NonceInterface';
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function setUp()
+    {
+        WP_Mock::setUp();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function tearDown()
+    {
+        WP_Mock::tearDown();
+    }
 
     /**
      * Creates a new instance of the test subject.
@@ -89,13 +110,26 @@ class AbstractNonceFactoryTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $nonce = $reflect->_make($id = 'test_nonce');
+        $id   = 'test_nonce';
+        $code = '1234567890';
+
+        WP_Mock::userFunction('wp_create_nonce', [
+            'times'  => 1,
+            'args'   => $id,
+            'return' => $code
+        ]);
+
+        $nonce = $reflect->_make($id);
 
         $this->assertInstanceOf(
             static::NONCE_CLASSNAME, $nonce,
             'Created instance is not a valid nonce.'
         );
 
-        $this->assertEquals($id, $nonce->getId(), 'Created nonce does not have the given ID.');
+        $this->assertEquals($id, $nonce->getId(),
+            'Created nonce does not have the given ID.');
+
+        $this->assertEquals($code, $nonce->getCode(),
+            'Created nonce does not have the expected code.');
     }
 }

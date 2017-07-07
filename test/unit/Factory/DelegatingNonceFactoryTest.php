@@ -3,6 +3,7 @@
 namespace unit\Factory;
 
 use RebelCode\WordPress\Nonce\Factory\DelegatingNonceFactory;
+use WP_Mock;
 use Xpmock\TestCase;
 
 /**
@@ -18,6 +19,26 @@ class DelegatingNonceFactoryTest extends TestCase
      * @since [*next-version*]
      */
     const NONCE_CLASSNAME = 'RebelCode\\WordPress\\Nonce\\NonceInterface';
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function setUp()
+    {
+        WP_Mock::setUp();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function tearDown()
+    {
+        WP_Mock::tearDown();
+    }
 
     /**
      * Creates a nonce for testing purposes.
@@ -66,35 +87,35 @@ class DelegatingNonceFactoryTest extends TestCase
     }
 
     /**
-     * Tests the nonce creation method to ensure that the created instance is a valid nonce instance.
+     * Tests the nonce creation method to ensure that a valid nonce instance is created.
      *
      * @since [*next-version*]
      */
-    public function testMakeInstanceType()
+    public function testMake()
     {
-        $factory = $this->createFactory('wp_nonce');
-        $subject = new DelegatingNonceFactory($factory, 'wp_nonce');
+        $factory = $this->createFactory();
+        $subject = new DelegatingNonceFactory($factory);
 
-        $nonce = $subject->make('');
+        $id   = 'test_nonce';
+        $code = '1234567890';
+
+        WP_Mock::userFunction('wp_create_nonce', [
+            'times'  => 1,
+            'args'   => $id,
+            'return' => $code
+        ]);
+
+        $nonce = $subject->make($id);
 
         $this->assertInstanceOf(
-            'RebelCode\\WordPress\\Nonce\\NonceInterface', $nonce,
-            'Created nonce is not a valid nonce instance.'
+            static::NONCE_CLASSNAME, $nonce,
+            'Created instance is not a valid nonce.'
         );
-    }
 
-    /**
-     * Tests the nonce creation method to ensure that the created nonce has the given ID.
-     *
-     * @since [*next-version*]
-     */
-    public function testMakeNonceId()
-    {
-        $factory = $this->createFactory('wp_nonce');
-        $subject = new DelegatingNonceFactory($factory, 'wp_nonce');
+        $this->assertEquals($id, $nonce->getId(),
+            'Created nonce does not have the given ID.');
 
-        $nonce = $subject->make($id = 'my-nonce');
-
-        $this->assertEquals($id, $nonce->getId());
+        $this->assertEquals($code, $nonce->getCode(),
+            'Created nonce does not have the expected code.');
     }
 }
