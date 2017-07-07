@@ -25,7 +25,7 @@ abstract class AbstractNonceFactory
     {
         $code = $this->_generateNonceCode($id);
 
-        return $this->_createNonce($id, $code);
+        return $this->_createNonceInstance($id, $code);
     }
 
     /**
@@ -52,5 +52,5 @@ abstract class AbstractNonceFactory
      *
      * @return NonceInterface The created nonce instance.
      */
-    abstract protected function _createNonce($id, $code);
+    abstract protected function _createNonceInstance($id, $code);
 }

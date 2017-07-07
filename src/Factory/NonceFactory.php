@@ -42,7 +42,7 @@ class NonceFactory extends AbstractNonceFactory implements FactoryInterface
      *
      * @since [*next-version*]
      */
-    protected function _createNonce($id, $code)
+    protected function _createNonceInstance($id, $code)
     {
         return new Nonce($id, $code);
     }

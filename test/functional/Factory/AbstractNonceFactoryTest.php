@@ -38,7 +38,7 @@ class AbstractNonceFactoryTest extends TestCase
         $me = $this;
 
         $mock = $this->mock(static::TEST_SUBJECT_CLASSNAME)
-            ->_createNonce(function($id, $code) use ($me) {
+            ->_createNonceInstance(function($id, $code) use ($me) {
                 return $me->createNonce($id, $code);
             })
             ->new();

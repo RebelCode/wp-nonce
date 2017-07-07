@@ -79,7 +79,7 @@ class DelegatingNonceFactory extends AbstractNonceFactory implements FactoryInte
      *
      * @since [*next-version*]
      */
-    protected function _createNonce($id, $code)
+    protected function _createNonceInstance($id, $code)
     {
         return $this->_getDelegateFactory()->make($this->_getDelegateId(), [
             static::K_CONFIG_ID   => $id,
