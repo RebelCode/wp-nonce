@@ -60,7 +60,7 @@ class DelegatingNonceFactoryTest extends TestCase
         $subject = new DelegatingNonceFactory($factory);
 
         $this->assertInstanceOf(
-            'Dhii\\Factory\\FactoryInterface', $subject,
+            'RebelCode\\WordPress\\Nonce\\Factory\\NonceFactoryInterface', $subject,
             'Subject does not implement expected interface'
         );
     }

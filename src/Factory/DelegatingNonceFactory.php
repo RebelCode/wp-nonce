@@ -9,7 +9,7 @@ use Dhii\Factory\FactoryInterface;
  *
  * @since [*next-version*]
  */
-class DelegatingNonceFactory extends AbstractNonceFactory implements FactoryInterface
+class DelegatingNonceFactory extends AbstractNonceFactory implements NonceFactoryInterface
 {
     /**
      * The config array key to use to pass the nonce code to the delegate factory.

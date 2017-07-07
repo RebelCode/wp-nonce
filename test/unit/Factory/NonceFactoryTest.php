@@ -29,7 +29,7 @@ class NonceFactoryTest extends TestCase
         $subject = new NonceFactory();
 
         $this->assertInstanceOf(
-            'Dhii\\Factory\\FactoryInterface', $subject,
+            'RebelCode\\WordPress\\Nonce\\Factory\\NonceFactoryInterface', $subject,
             'Subject does not implement expected interface.'
         );
     }
