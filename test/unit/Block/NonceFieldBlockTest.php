@@ -4,6 +4,7 @@ namespace RebelCode\WordPress\Nonce\UnitTest\Block;
 
 use RebelCode\WordPress\Nonce\Block\NonceFieldBlock;
 use Xpmock\TestCase;
+use \WP_Mock;
 
 class NonceFieldBlockTest extends TestCase
 {
@@ -13,6 +14,38 @@ class NonceFieldBlockTest extends TestCase
      * @since [*next-version*]
      */
     const NONCE_CLASSNAME = 'RebelCode\\WordPress\\Nonce\\NonceInterface';
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public static function setUpBeforeClass()
+    {
+        // Mock the request URI in the SERVER super global.
+        // In a WordPress environment, this index is assumed to be set.
+        $_SERVER['REQUEST_URI'] = 'dev/request/uri';
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function setUp()
+    {
+        WP_Mock::setUp();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function tearDown()
+    {
+        WP_Mock::tearDown();
+    }
 
     /**
      * Creates a nonce for testing purposes.
@@ -75,17 +108,23 @@ class NonceFieldBlockTest extends TestCase
      */
     public function testRender()
     {
-        $id        = 'my-nonce';
-        $code      = \wp_create_nonce($id);
-        $fieldName = 'my-field';
-        $nonce     = $this->createNonce($id, $code);
-        $subject   = new NonceFieldBlock($nonce, $fieldName, true);
+        WP_Mock::passthruFunction( '\wp_unslash');
+
+        // Create nonce
+        $id         = 'my-nonce';
+        $code       = '123456';
+        $nonce      = $this->createNonce($id, $code);
+        // Set up test subject instance
+        $fName      = 'my-field';
+        $subject    = new NonceFieldBlock($nonce, $fName, true);
+        // Referer field name as used in test subject
+        $fReferName = NonceFieldBlock::REFERER_FIELD_NAME;
 
         $rendered = $subject->render();
 
         $this->assertContains(sprintf('value="%s"', $code), $rendered);
-        $this->assertContains(sprintf('name="%s"', $fieldName), $rendered);
-        $this->assertContains('value="dev/referer"', $rendered);
+        $this->assertContains(sprintf('name="%s"', $fName), $rendered);
+        $this->assertContains(sprintf('name="%s"', $fReferName), $rendered);
     }
 
     /**
@@ -95,17 +134,23 @@ class NonceFieldBlockTest extends TestCase
      */
     public function testRenderNoReferer()
     {
-        $id        = 'my-nonce';
-        $code      = \wp_create_nonce($id);
-        $fieldName = 'my-field';
-        $nonce     = $this->createNonce($id, $code);
-        $subject   = new NonceFieldBlock($nonce, $fieldName, false);
+        WP_Mock::passthruFunction( '\wp_unslash');
+
+        // Create nonce
+        $id         = 'my-nonce';
+        $code       = '123456';
+        $nonce      = $this->createNonce($id, $code);
+        // Set up test subject instance
+        $fName      = 'my-field';
+        $subject    = new NonceFieldBlock($nonce, $fName, false);
+        // Referer field name as used in test subject
+        $fReferName = NonceFieldBlock::REFERER_FIELD_NAME;
 
         $rendered = $subject->render();
 
         $this->assertContains(sprintf('value="%s"', $code), $rendered);
-        $this->assertContains(sprintf('name="%s"', $fieldName), $rendered);
-        $this->assertNotContains('value="dev/referer"', $rendered);
+        $this->assertContains(sprintf('name="%s"', $fName), $rendered);
+        $this->assertNotContains(sprintf('name="%s"', $fReferName), $rendered);
     }
 
     /**
@@ -113,19 +158,24 @@ class NonceFieldBlockTest extends TestCase
      *
      * @since [*next-version*]
      */
-    public function testCanBeCastToString()
+    public function testCastToString()
     {
-        $id        = 'my-nonce';
-        $code      = \wp_create_nonce($id);
-        $fieldName = 'my-field';
-        $nonce     = $this->createNonce($id, $code);
-        $subject   = new NonceFieldBlock($nonce, $fieldName, true);
+        WP_Mock::passthruFunction( '\wp_unslash');
 
-        $casted = (string) $subject;
+        // Create nonce
+        $id         = 'my-nonce';
+        $code       = '123456';
+        $nonce      = $this->createNonce($id, $code);
+        // Set up test subject instance
+        $fName      = 'my-field';
+        $subject    = new NonceFieldBlock($nonce, $fName, true);
+        // Referer field name as used in test subject
+        $fReferName = NonceFieldBlock::REFERER_FIELD_NAME;
 
-        $this->assertInternalType('string', $casted);
-        $this->assertContains(sprintf('value="%s"', $code), $casted);
-        $this->assertContains(sprintf('name="%s"', $fieldName), $casted);
-        $this->assertContains('value="dev/referer"', $casted);
+        $rendered = (string) $subject;
+
+        $this->assertContains(sprintf('value="%s"', $code), $rendered);
+        $this->assertContains(sprintf('name="%s"', $fName), $rendered);
+        $this->assertContains(sprintf('name="%s"', $fReferName), $rendered);
     }
 }

@@ -21,6 +21,11 @@ class NonceFieldBlock extends AbstractNonceFieldBlock implements BlockInterface,
     const DEFAULT_FIELD_NAME = '_wpnonce';
 
     /**
+     * The name of the referer field.
+     */
+    const REFERER_FIELD_NAME = '_wp_http_referer';
+
+    /**
      * Constructor.
      *
      * @since [*next-version*]
@@ -36,7 +41,18 @@ class NonceFieldBlock extends AbstractNonceFieldBlock implements BlockInterface,
     ) {
         $this->_setNonce($nonce)
             ->_setFieldName($fieldName)
-            ->_setUseReferer($useReferer);
+            ->_setUseReferer($useReferer)
+            ->_setRefererFieldName(static::REFERER_FIELD_NAME);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    protected function _getRefererUrl()
+    {
+        return \esc_attr(\wp_unslash($_SERVER['REQUEST_URI']));
     }
 
     /**
