@@ -10,7 +10,7 @@ use RebelCode\WordPress\Nonce\Block\AbstractNonceFieldBlock;
  *
  * @since [*next-version*]
  */
-class sup extends TestCase
+class AbstractNonceFieldBlockTest extends TestCase
 {
     /**
      * The classname of the test subject.
