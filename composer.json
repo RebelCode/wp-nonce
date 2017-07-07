@@ -38,7 +38,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/RebelCodecom/wp-nonce-interface"
+            "url": "https://github.com/RebelCode/wp-nonce-interface"
         }
     ]
 }
