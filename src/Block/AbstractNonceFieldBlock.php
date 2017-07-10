@@ -23,15 +23,13 @@ abstract class AbstractNonceFieldBlock
     protected $fieldName;
 
     /**
-     * Whether or not to use the referer.
-     *
-     * If true, a second hidden field will be used to specify the referer.
+     * The referer URL.
      *
      * @since [*next-version*]
      *
-     * @var bool
+     * @var string|null
      */
-    protected $useReferer;
+    protected $refererUrl;
 
     /**
      * The referer field's HTML name attribute value.
@@ -71,29 +69,29 @@ abstract class AbstractNonceFieldBlock
     }
 
     /**
-     * Retrieves whether or not to use the referer.
+     * Retrieves the referer URL, if any.
      *
      * @since [*next-version*]
      *
-     * @return bool True if the referer is used, false if not.
+     * @return string|null The referer URL or null if not using the referer.
      */
-    protected function _getUseReferer()
+    protected function _getRefererUrl()
     {
-        return $this->useReferer;
+        return $this->refererUrl;
     }
 
     /**
-     * Sets whether or not to use the referer.
+     * Sets the referer URL or disables the inclusion of the referer.
      *
      * @since [*next-version*]
      *
-     * @param bool $useReferer True to use the referer in the field, false to not.
+     * @param string|null $refererUrl The referer URL or null to disable inclusion of the referer.
      *
      * @return $this
      */
-    protected function _setUseReferer($useReferer)
+    protected function _setRefererUrl($refererUrl)
     {
-        $this->useReferer = $useReferer;
+        $this->refererUrl = $refererUrl;
 
         return $this;
     }
@@ -141,23 +139,16 @@ abstract class AbstractNonceFieldBlock
             $this->_getNonce()->getCode()
         );
 
-        if ($this->_getUseReferer()) {
+        $refererUrl = $this->_getRefererUrl();
+
+        if ($refererUrl !== null) {
             $output .= sprintf(
                 '<input type="hidden" name="%1$s" value="%2$s" />',
                 $this->_getRefererFieldName(),
-                $this->_getRefererUrl()
+                $refererUrl
             );
         }
 
         return $output;
     }
-
-    /**
-     * Determines the URL to use as the referer URL.
-     *
-     * @since [*next-version*]
-     *
-     * @return string
-     */
-    abstract protected function _getRefererUrl();
 }

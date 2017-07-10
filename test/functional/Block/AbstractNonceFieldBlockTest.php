@@ -43,7 +43,6 @@ class AbstractNonceFieldBlockTest extends TestCase
 
         $mock = $this->mock(static::TEST_SUBJECT_CLASSNAME)
             ->_getNonce($nonce)
-            ->_getRefererUrl($refererUrl)
             ->new();
 
         return $mock;
@@ -102,14 +101,14 @@ class AbstractNonceFieldBlockTest extends TestCase
      *
      * @since [*next-version*]
      */
-    public function testGetSetUseReferer()
+    public function testGetSetRefererUrl()
     {
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $reflect->_setUseReferer($referer = true);
+        $reflect->_setRefererUrl($referer = 'my://special/referer/url');
 
-        $this->assertEquals($referer, $reflect->_getUseReferer());
+        $this->assertEquals($referer, $reflect->_getRefererUrl());
     }
 
     /**
@@ -139,7 +138,7 @@ class AbstractNonceFieldBlockTest extends TestCase
         $subject    = $this->createInstance($nonce, $refererUrl);
         $reflect    = $this->reflect($subject);
 
-        $reflect->_setUseReferer(false);
+        $reflect->_setRefererUrl(null);
         $reflect->_setFieldName($fName = 'special-nonce');
         $reflect->_setRefererFieldName($fRefererName = 'special-referer');
 
@@ -167,7 +166,7 @@ class AbstractNonceFieldBlockTest extends TestCase
         $subject    = $this->createInstance($nonce, $refererUrl);
         $reflect    = $this->reflect($subject);
 
-        $reflect->_setUseReferer(true);
+        $reflect->_setRefererUrl($refererUrl);
         $reflect->_setFieldName($fName = 'special-nonce');
         $reflect->_setRefererFieldName($fRefererName = 'special-referer');
 
