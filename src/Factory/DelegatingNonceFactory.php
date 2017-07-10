@@ -69,9 +69,9 @@ class DelegatingNonceFactory extends AbstractNonceFactory implements NonceFactor
      *
      * @since [*next-version*]
      */
-    public function make($id = '', $config = [])
+    public function make($config = [])
     {
-        return $this->_make($id, $config);
+        return $this->_make($config);
     }
 
     /**

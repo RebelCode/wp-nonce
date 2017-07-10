@@ -25,9 +25,9 @@ class NonceFactory extends AbstractNonceFactory implements NonceFactoryInterface
      *
      * @since [*next-version*]
      */
-    public function make($id = '', $config = [])
+    public function make($config = [])
     {
-        return $this->_make($id, $config);
+        return $this->_make($config);
     }
 
     /**

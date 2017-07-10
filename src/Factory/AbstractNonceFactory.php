@@ -12,17 +12,27 @@ use RebelCode\WordPress\Nonce\NonceInterface;
 abstract class AbstractNonceFactory
 {
     /**
+     * The key of the ID in factory config data.
+     *
+     * @since [*next-version*]
+     */
+    const K_DELEGATE_CONFIG_ID = 'id';
+
+    /**
      * Creates a new nonce instance.
      *
      * @since [*next-version*]
      *
-     * @param string $id   Optional ID for the nonce to be generated.
-     * @param array  $args Optional additional arguments.
+     * @param array $config Configuration data.
      *
      * @return NonceInterface
      */
-    protected function _make($id = '', $args = [])
+    protected function _make($config = [])
     {
+        $id = isset($config[static::K_DELEGATE_CONFIG_ID])
+            ? $config[static::K_DELEGATE_CONFIG_ID]
+            : '';
+
         $code = $this->_generateNonceCode($id);
 
         return $this->_createNonceInstance($id, $code);
