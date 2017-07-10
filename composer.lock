@@ -358,12 +358,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/wp-nonce-interface.git",
-                "reference": "cd1f99cb6ec02084cc8825b7ca62ae6e5a456eca"
+                "reference": "214adf28f732a50f84bfd0d5bd63c6f33bcc137c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/wp-nonce-interface/zipball/cd1f99cb6ec02084cc8825b7ca62ae6e5a456eca",
-                "reference": "cd1f99cb6ec02084cc8825b7ca62ae6e5a456eca",
+                "url": "https://api.github.com/repos/RebelCode/wp-nonce-interface/zipball/214adf28f732a50f84bfd0d5bd63c6f33bcc137c",
+                "reference": "214adf28f732a50f84bfd0d5bd63c6f33bcc137c",
                 "shasum": ""
             },
             "require": {
@@ -405,7 +405,7 @@
                 "source": "https://github.com/RebelCode/wp-nonce-interface/tree/task/initial-interfaces",
                 "issues": "https://github.com/RebelCode/wp-nonce-interface/issues"
             },
-            "time": "2017-07-07 12:57:21"
+            "time": "2017-07-10 10:03:46"
         }
     ],
     "packages-dev": [
@@ -454,7 +454,7 @@
                 "GPL-2.0+"
             ],
             "description": "A mocking library to take the pain out of unit testing for WordPress",
-            "time": "2017-06-01T16:49:53+00:00"
+            "time": "2017-06-01 16:49:53"
         },
         {
             "name": "antecedent/patchwork",
