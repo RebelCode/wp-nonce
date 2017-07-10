@@ -16,14 +16,14 @@ class DelegatingNonceFactory extends AbstractNonceFactory implements NonceFactor
      *
      * @since [*next-version*]
      */
-    const K_CONFIG_ID = 'id';
+    const K_DELEGATE_CONFIG_ID = 'id';
 
     /**
      * The config array key to use to pass the nonce code to the delegate factory.
      *
      * @since [*next-version*]
      */
-    const K_CONFIG_CODE = 'code';
+    const K_DELEGATE_CONFIG_CODE = 'code';
 
     /**
      * The default ID used by the delegate factory for nonces.
@@ -82,8 +82,8 @@ class DelegatingNonceFactory extends AbstractNonceFactory implements NonceFactor
     protected function _createNonceInstance($id, $code)
     {
         return $this->_getDelegateFactory()->make($this->_getDelegateId(), [
-            static::K_CONFIG_ID   => $id,
-            static::K_CONFIG_CODE => $code,
+            static::K_DELEGATE_CONFIG_ID   => $id,
+            static::K_DELEGATE_CONFIG_CODE => $code,
         ]);
     }
 
