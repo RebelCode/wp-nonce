@@ -20,18 +20,6 @@ class NonceFieldBlockTest extends TestCase
      *
      * @since [*next-version*]
      */
-    public static function setUpBeforeClass()
-    {
-        // Mock the request URI in the SERVER super global.
-        // In a WordPress environment, this index is assumed to be set.
-        $_SERVER['REQUEST_URI'] = 'dev/request/uri';
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @since [*next-version*]
-     */
     public function setUp()
     {
         WP_Mock::setUp();
@@ -108,22 +96,24 @@ class NonceFieldBlockTest extends TestCase
      */
     public function testRender()
     {
-        WP_Mock::passthruFunction( '\wp_unslash');
+        WP_Mock::passthruFunction( 'wp_unslash');
 
         // Create nonce
         $id         = 'my-nonce';
         $code       = '123456';
         $nonce      = $this->createNonce($id, $code);
-        // Set up test subject instance
+        $refererUrl = 'my://referer/url';
+        // Field names
         $fName      = 'my-field';
-        $subject    = new NonceFieldBlock($nonce, $fName, true);
-        // Referer field name as used in test subject
         $fReferName = NonceFieldBlock::REFERER_FIELD_NAME;
+        // Set up test subject instance
+        $subject    = new NonceFieldBlock($nonce, $fName, $refererUrl);
 
         $rendered = $subject->render();
 
         $this->assertContains(sprintf('value="%s"', $code), $rendered);
         $this->assertContains(sprintf('name="%s"', $fName), $rendered);
+        $this->assertContains(sprintf('value="%s"', $refererUrl), $rendered);
         $this->assertContains(sprintf('name="%s"', $fReferName), $rendered);
     }
 
@@ -134,17 +124,17 @@ class NonceFieldBlockTest extends TestCase
      */
     public function testRenderNoReferer()
     {
-        WP_Mock::passthruFunction( '\wp_unslash');
+        WP_Mock::passthruFunction( 'wp_unslash');
 
         // Create nonce
         $id         = 'my-nonce';
         $code       = '123456';
         $nonce      = $this->createNonce($id, $code);
-        // Set up test subject instance
+        // Field names
         $fName      = 'my-field';
-        $subject    = new NonceFieldBlock($nonce, $fName, false);
-        // Referer field name as used in test subject
         $fReferName = NonceFieldBlock::REFERER_FIELD_NAME;
+        // Set up test subject instance
+        $subject    = new NonceFieldBlock($nonce, $fName, null);
 
         $rendered = $subject->render();
 
@@ -160,17 +150,18 @@ class NonceFieldBlockTest extends TestCase
      */
     public function testCastToString()
     {
-        WP_Mock::passthruFunction( '\wp_unslash');
+        WP_Mock::passthruFunction( 'wp_unslash');
 
         // Create nonce
         $id         = 'my-nonce';
         $code       = '123456';
         $nonce      = $this->createNonce($id, $code);
-        // Set up test subject instance
+        $refererUrl = 'my://referer/url';
+        // Field names
         $fName      = 'my-field';
-        $subject    = new NonceFieldBlock($nonce, $fName, true);
-        // Referer field name as used in test subject
         $fReferName = NonceFieldBlock::REFERER_FIELD_NAME;
+        // Set up test subject instance
+        $subject    = new NonceFieldBlock($nonce, $fName, $refererUrl);
 
         $rendered = (string) $subject;
 

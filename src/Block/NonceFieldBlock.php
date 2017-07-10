@@ -32,16 +32,16 @@ class NonceFieldBlock extends AbstractNonceFieldBlock implements BlockInterface,
      *
      * @param NonceInterface $nonce
      * @param string         $fieldName
-     * @param bool           $useReferer
+     * @param string|null    $refererUrl
      */
     public function __construct(
         NonceInterface $nonce,
         $fieldName = self::DEFAULT_FIELD_NAME,
-        $useReferer = true
+        $refererUrl = null
     ) {
         $this->_setNonce($nonce)
             ->_setFieldName($fieldName)
-            ->_setUseReferer($useReferer)
+            ->_setRefererUrl($refererUrl)
             ->_setRefererFieldName(static::REFERER_FIELD_NAME);
     }
 
@@ -52,7 +52,7 @@ class NonceFieldBlock extends AbstractNonceFieldBlock implements BlockInterface,
      */
     protected function _getRefererUrl()
     {
-        return \esc_attr(\wp_unslash($_SERVER['REQUEST_URI']));
+        return \esc_attr(\wp_unslash(parent::_getRefererUrl()));
     }
 
     /**
