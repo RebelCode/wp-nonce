@@ -110,8 +110,11 @@ class AbstractNonceFactoryTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $id   = 'test_nonce';
-        $code = '1234567890';
+        $id     = 'test_nonce';
+        $code   = '1234567890';
+        $config = [
+            'id' => $id
+        ];
 
         WP_Mock::userFunction('wp_create_nonce', [
             'times'  => 1,
@@ -119,7 +122,7 @@ class AbstractNonceFactoryTest extends TestCase
             'return' => $code
         ]);
 
-        $nonce = $reflect->_make($id);
+        $nonce = $reflect->_make($config);
 
         $this->assertInstanceOf(
             static::NONCE_CLASSNAME, $nonce,

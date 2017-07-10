@@ -63,14 +63,20 @@ class NonceFactoryTest extends TestCase
      */
     public function testMake()
     {
+        $id     = 'my-nonce';
+        $code   = '1234567890';
+        $config = [
+            'id' => $id
+        ];
+
         WP_Mock::userFunction('wp_create_nonce', [
             'times'  => 1,
-            'args'   => $id   = 'my-nonce',
-            'return' => $code = '1234567890'
+            'args'   => $id,
+            'return' => $code
         ]);
 
         $subject = new NonceFactory();
-        $nonce   = $subject->make($id);
+        $nonce   = $subject->make($config);
 
         $this->assertInstanceOf(
             static::NONCE_CLASSNAME, $nonce,

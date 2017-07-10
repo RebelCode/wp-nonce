@@ -96,8 +96,11 @@ class DelegatingNonceFactoryTest extends TestCase
         $factory = $this->createFactory();
         $subject = new DelegatingNonceFactory($factory);
 
-        $id   = 'test_nonce';
-        $code = '1234567890';
+        $id     = 'test_nonce';
+        $code   = '1234567890';
+        $config = [
+            'id' => $id
+        ];
 
         WP_Mock::userFunction('wp_create_nonce', [
             'times'  => 1,
@@ -105,7 +108,7 @@ class DelegatingNonceFactoryTest extends TestCase
             'return' => $code
         ]);
 
-        $nonce = $subject->make($id);
+        $nonce = $subject->make($config);
 
         $this->assertInstanceOf(
             static::NONCE_CLASSNAME, $nonce,
