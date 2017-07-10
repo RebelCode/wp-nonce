@@ -52,7 +52,7 @@ class NonceFieldBlock extends AbstractNonceFieldBlock implements BlockInterface,
      */
     protected function _getRefererUrl()
     {
-        return \esc_attr(\wp_unslash(parent::_getRefererUrl()));
+        return \wp_unslash(parent::_getRefererUrl());
     }
 
     /**

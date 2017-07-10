@@ -135,8 +135,8 @@ abstract class AbstractNonceFieldBlock
     {
         $output = sprintf(
             '<input type="hidden" id="%1$s" name="%1$s" value="%2$s" />',
-            $this->_getFieldName(),
-            $this->_getNonce()->getCode()
+            \esc_attr($this->_getFieldName()),
+            \esc_attr($this->_getNonce()->getCode())
         );
 
         $refererUrl = $this->_getRefererUrl();
@@ -144,8 +144,8 @@ abstract class AbstractNonceFieldBlock
         if ($refererUrl !== null) {
             $output .= sprintf(
                 '<input type="hidden" name="%1$s" value="%2$s" />',
-                $this->_getRefererFieldName(),
-                $refererUrl
+                \esc_attr($this->_getRefererFieldName()),
+                \esc_attr($refererUrl)
             );
         }
 
