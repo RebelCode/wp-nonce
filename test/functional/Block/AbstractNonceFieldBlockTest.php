@@ -43,6 +43,7 @@ class AbstractNonceFieldBlockTest extends TestCase
 
         $mock = $this->mock(static::TEST_SUBJECT_CLASSNAME)
             ->_getNonce($nonce)
+            ->_render()
             ->new();
 
         return $mock;
@@ -124,61 +125,5 @@ class AbstractNonceFieldBlockTest extends TestCase
         $reflect->_setRefererFieldName($refererFieldName = 'my_referer');
 
         $this->assertEquals($refererFieldName, $reflect->_getRefererFieldName());
-    }
-
-    /**
-     * Tests the render method to ensure that it renders a string.
-     *
-     * @since [*next-version*]
-     */
-    public function testRender()
-    {
-        $nonce      = $this->createNonce('my-special-nonce', '123456');
-        $refererUrl = 'my://referer/url';
-        $subject    = $this->createInstance($nonce, $refererUrl);
-        $reflect    = $this->reflect($subject);
-
-        $reflect->_setRefererUrl(null);
-        $reflect->_setFieldName($fName = 'special-nonce');
-        $reflect->_setRefererFieldName($fRefererName = 'special-referer');
-
-        $rendered = $reflect->_render();
-
-        // Ensure rendered result is a string
-        $this->assertInternalType('string', $rendered);
-        // Ensure nonce details are included
-        $this->assertContains(sprintf('name="%s"', $fName), $rendered);
-        $this->assertContains(sprintf('value="%s"', $nonce->getCode()), $rendered);
-        // Ensure referer not included
-        $this->assertNotContains(sprintf('name="%s"', $fRefererName), $rendered);
-        $this->assertNotContains($refererUrl, $rendered);
-    }
-
-    /**
-     * Tests the render method to ensure that it renders a string.
-     *
-     * @since [*next-version*]
-     */
-    public function testRenderUseReferer()
-    {
-        $nonce      = $this->createNonce('my-special-nonce', '123456');
-        $refererUrl = 'my://referer/url';
-        $subject    = $this->createInstance($nonce, $refererUrl);
-        $reflect    = $this->reflect($subject);
-
-        $reflect->_setRefererUrl($refererUrl);
-        $reflect->_setFieldName($fName = 'special-nonce');
-        $reflect->_setRefererFieldName($fRefererName = 'special-referer');
-
-        $rendered = $reflect->_render();
-
-        // Ensure rendered result is a string
-        $this->assertInternalType('string', $rendered);
-        // Ensure nonce details are included
-        $this->assertContains(sprintf('name="%s"', $fName), $rendered);
-        $this->assertContains(sprintf('value="%s"', $nonce->getCode()), $rendered);
-        // Ensure referer details are included
-        $this->assertContains(sprintf('name="%s"', $fRefererName), $rendered);
-        $this->assertContains($refererUrl, $rendered);
     }
 }

@@ -30,9 +30,9 @@ class NonceFieldBlock extends AbstractNonceFieldBlock implements BlockInterface,
      *
      * @since [*next-version*]
      *
-     * @param NonceInterface $nonce
-     * @param string         $fieldName
-     * @param string|null    $refererUrl
+     * @param NonceInterface $nonce      The nonce instance to render.
+     * @param string         $fieldName  The name of the field.
+     * @param string|null    $refererUrl The referer URL.
      */
     public function __construct(
         NonceInterface $nonce,
@@ -73,6 +73,32 @@ class NonceFieldBlock extends AbstractNonceFieldBlock implements BlockInterface,
     public function render()
     {
         return $this->_render();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    protected function _render()
+    {
+        $output = sprintf(
+            '<input type="hidden" id="%1$s" name="%1$s" value="%2$s" />',
+            \esc_attr($this->_getFieldName()),
+            \esc_attr($this->_getNonce()->getCode())
+        );
+
+        $refererUrl = $this->_getRefererUrl();
+
+        if ($refererUrl !== null) {
+            $output .= sprintf(
+                '<input type="hidden" name="%1$s" value="%2$s" />',
+                \esc_attr($this->_getRefererFieldName()),
+                \esc_attr($refererUrl)
+            );
+        }
+
+        return $output;
     }
 
     /**
