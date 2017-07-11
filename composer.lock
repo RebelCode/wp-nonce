@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ebc6a2d28425a2275a86b4a4cc5a0d95",
+    "content-hash": "5b32002ad25600c6f9a2c9a0b62fb0cb",
     "packages": [
         {
             "name": "dhii/block-interface",
@@ -93,16 +93,16 @@
         },
         {
             "name": "dhii/factory-interface",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/factory-interface.git",
-                "reference": "9f98cbcbcda1bec17f263c3653067667697a5bc6"
+                "reference": "0f1c1ea23cd192ef52a4f554512edcca7ce3e571"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/factory-interface/zipball/9f98cbcbcda1bec17f263c3653067667697a5bc6",
-                "reference": "9f98cbcbcda1bec17f263c3653067667697a5bc6",
+                "url": "https://api.github.com/repos/Dhii/factory-interface/zipball/0f1c1ea23cd192ef52a4f554512edcca7ce3e571",
+                "reference": "0f1c1ea23cd192ef52a4f554512edcca7ce3e571",
                 "shasum": ""
             },
             "require": {
@@ -131,20 +131,20 @@
                     "email": "development@dhii.co"
                 }
             ],
-            "time": "2017-04-02 11:27:33"
+            "time": "2017-06-19 14:11:26"
         },
         {
             "name": "dhii/i18n-helper-base",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/i18n-helper-base.git",
-                "reference": "cd97f092996666d8b422c523c59e7bcf9c3d5514"
+                "reference": "10c8b5db9fc8569df3d44c0a0b9329a0a1b7df7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/i18n-helper-base/zipball/cd97f092996666d8b422c523c59e7bcf9c3d5514",
-                "reference": "cd97f092996666d8b422c523c59e7bcf9c3d5514",
+                "url": "https://api.github.com/repos/Dhii/i18n-helper-base/zipball/10c8b5db9fc8569df3d44c0a0b9329a0a1b7df7c",
+                "reference": "10c8b5db9fc8569df3d44c0a0b9329a0a1b7df7c",
                 "shasum": ""
             },
             "require": {
@@ -152,9 +152,13 @@
             },
             "require-dev": {
                 "codeclimate/php-test-reporter": "<=0.3.2",
+                "dhii/i18n-interface": "^0.1",
                 "dhii/php-cs-fixer-config": "dev-php-5.3",
                 "phpunit/phpunit": "^4.8",
                 "ptrofimov/xpmock": "^1.1"
+            },
+            "suggest": {
+                "dhii/i18n-interface": "Allows translating strings with context"
             },
             "type": "library",
             "autoload": {
@@ -173,7 +177,7 @@
                 }
             ],
             "description": "A base for internationalization consumers",
-            "time": "2017-06-16 13:24:55"
+            "time": "2017-06-16 14:40:54"
         },
         {
             "name": "dhii/stringable-interface",
@@ -350,16 +354,16 @@
         },
         {
             "name": "rebelcode/wp-nonce-interface",
-            "version": "dev-task/initial-interfaces",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RebelCodecom/wp-nonce-interface.git",
-                "reference": "a51c5ea5cdfb29332e588711d9c4929b07c56759"
+                "url": "https://github.com/RebelCode/wp-nonce-interface.git",
+                "reference": "a381a8df1ae144561662c1fe35dff8b2eeb12a98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCodecom/wp-nonce-interface/zipball/a51c5ea5cdfb29332e588711d9c4929b07c56759",
-                "reference": "a51c5ea5cdfb29332e588711d9c4929b07c56759",
+                "url": "https://api.github.com/repos/RebelCode/wp-nonce-interface/zipball/a381a8df1ae144561662c1fe35dff8b2eeb12a98",
+                "reference": "a381a8df1ae144561662c1fe35dff8b2eeb12a98",
                 "shasum": ""
             },
             "require": {
@@ -398,13 +402,101 @@
             ],
             "description": "Interfaces for an object oriented API for WordPress nonces.",
             "support": {
-                "source": "https://github.com/RebelCodecom/wp-nonce-interface/tree/task/initial-interfaces",
-                "issues": "https://github.com/RebelCodecom/wp-nonce-interface/issues"
+                "source": "https://github.com/RebelCode/wp-nonce-interface/tree/develop",
+                "issues": "https://github.com/RebelCode/wp-nonce-interface/issues"
             },
-            "time": "2017-07-05 15:20:32"
+            "time": "2017-07-11 10:54:27"
         }
     ],
     "packages-dev": [
+        {
+            "name": "10up/wp_mock",
+            "version": "dev-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/10up/wp_mock.git",
+                "reference": "01458ea2173ace24291e4be42f7c3c3a3ebfe48a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/10up/wp_mock/zipball/01458ea2173ace24291e4be42f7c3c3a3ebfe48a",
+                "reference": "01458ea2173ace24291e4be42f7c3c3a3ebfe48a",
+                "shasum": ""
+            },
+            "require": {
+                "antecedent/patchwork": "~2.0.3",
+                "mockery/mockery": "^0.9.5",
+                "php": ">=5.6",
+                "phpunit/phpunit": ">=4.3"
+            },
+            "conflict": {
+                "phpunit/phpunit": ">=6.0"
+            },
+            "require-dev": {
+                "behat/behat": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-dev": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WP_Mock\\": "./php/WP_Mock"
+                },
+                "classmap": [
+                    "php/WP_Mock.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "A mocking library to take the pain out of unit testing for WordPress",
+            "time": "2017-06-01 16:49:53"
+        },
+        {
+            "name": "antecedent/patchwork",
+            "version": "2.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/antecedent/patchwork.git",
+                "reference": "d8e772ee90390960c23c6c64e09f1279d8a7b0df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/antecedent/patchwork/zipball/d8e772ee90390960c23c6c64e09f1279d8a7b0df",
+                "reference": "d8e772ee90390960c23c6c64e09f1279d8a7b0df",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignas Rudaitis",
+                    "email": "ignas.rudaitis@gmail.com"
+                }
+            ],
+            "description": "Method redefinition (monkey-patching) functionality for PHP.",
+            "homepage": "http://patchwork2.org/",
+            "keywords": [
+                "aop",
+                "aspect",
+                "interception",
+                "monkeypatching",
+                "redefinition",
+                "runkit",
+                "testing"
+            ],
+            "time": "2017-07-11T07:22:21+00:00"
+        },
         {
             "name": "codeclimate/php-test-reporter",
             "version": "v0.3.2",
@@ -465,23 +557,24 @@
         },
         {
             "name": "dhii/php-cs-fixer-config",
-            "version": "dev-php-5.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/php-cs-fixer-config.git",
-                "reference": "ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca"
+                "reference": "aef10e47f184ae206ff13c847ccc634b4ae87635"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/php-cs-fixer-config/zipball/ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca",
-                "reference": "ee3cc6c906a1aa4dca2bcbfcfef684dbd1ebb8ca",
+                "url": "https://api.github.com/repos/Dhii/php-cs-fixer-config/zipball/aef10e47f184ae206ff13c847ccc634b4ae87635",
+                "reference": "aef10e47f184ae206ff13c847ccc634b4ae87635",
                 "shasum": ""
             },
             "require": {
                 "friendsofphp/php-cs-fixer": ">=1.11 <1.12",
-                "php": "^5.3 | ^7.0"
+                "php": "^5.4 | ^7.0"
             },
             "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
                 "phpunit/phpunit": "^4.8"
             },
             "type": "library",
@@ -501,7 +594,7 @@
                 }
             ],
             "description": "A default PHP CS Fixer config implementation",
-            "time": "2016-09-03 14:45:03"
+            "time": "2016-09-03 14:20:46"
         },
         {
             "name": "doctrine/instantiator",
@@ -707,6 +800,116 @@
             ],
             "abandoned": "guzzlehttp/guzzle",
             "time": "2014-01-28T22:29:15+00:00"
+        },
+        {
+            "name": "hamcrest/hamcrest-php",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hamcrest/hamcrest-php.git",
+                "reference": "b37020aa976fa52d3de9aa904aa2522dc518f79c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/b37020aa976fa52d3de9aa904aa2522dc518f79c",
+                "reference": "b37020aa976fa52d3de9aa904aa2522dc518f79c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "replace": {
+                "cordoval/hamcrest-php": "*",
+                "davedevelopment/hamcrest-php": "*",
+                "kodova/hamcrest-php": "*"
+            },
+            "require-dev": {
+                "phpunit/php-file-iterator": "1.3.3",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "hamcrest"
+                ],
+                "files": [
+                    "hamcrest/Hamcrest.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "description": "This is the PHP port of Hamcrest Matchers",
+            "keywords": [
+                "test"
+            ],
+            "time": "2015-05-11T14:41:42+00:00"
+        },
+        {
+            "name": "mockery/mockery",
+            "version": "0.9.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mockery/mockery.git",
+                "reference": "6fdb61243844dc924071d3404bb23994ea0b6856"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
+                "reference": "6fdb61243844dc924071d3404bb23994ea0b6856",
+                "shasum": ""
+            },
+            "require": {
+                "hamcrest/hamcrest-php": "~1.1",
+                "lib-pcre": ">=7.0",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mockery": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pádraic Brady",
+                    "email": "padraic.brady@gmail.com",
+                    "homepage": "http://blog.astrumfutura.com"
+                },
+                {
+                    "name": "Dave Marshall",
+                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "homepage": "http://davedevelopment.co.uk"
+                }
+            ],
+            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succinct API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
+            "homepage": "http://github.com/padraic/mockery",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "library",
+                "mock",
+                "mock objects",
+                "mockery",
+                "stub",
+                "test",
+                "test double",
+                "testing"
+            ],
+            "time": "2017-02-28T12:52:32+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2421,7 +2624,8 @@
         "dhii/i18n-helper-base": 20,
         "dhii/factory-interface": 20,
         "dhii/block-interface": 20,
-        "dhii/php-cs-fixer-config": 20
+        "dhii/php-cs-fixer-config": 20,
+        "10up/wp_mock": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
