@@ -96,8 +96,8 @@ class NonceFieldBlockTest extends TestCase
      */
     public function testRender()
     {
-        WP_Mock::passthruFunction( 'wp_unslash');
-        WP_Mock::passthruFunction( 'esc_attr');
+        WP_Mock::wpFunction('wp_unslash', ['return_arg' => 0]);
+        WP_Mock::wpFunction('esc_attr', ['return_arg' => 0]);
 
         // Create nonce
         $id         = 'my-nonce';
@@ -125,8 +125,8 @@ class NonceFieldBlockTest extends TestCase
      */
     public function testRenderNoReferer()
     {
-        WP_Mock::passthruFunction( 'wp_unslash');
-        WP_Mock::passthruFunction( 'esc_attr');
+        WP_Mock::wpFunction('wp_unslash', ['return_arg' => 0]);
+        WP_Mock::wpFunction('esc_attr', ['return_arg' => 0]);
 
         // Create nonce
         $id         = 'my-nonce';
@@ -152,8 +152,8 @@ class NonceFieldBlockTest extends TestCase
      */
     public function testCastToString()
     {
-        WP_Mock::passthruFunction( 'wp_unslash');
-        WP_Mock::passthruFunction( 'esc_attr');
+        WP_Mock::wpFunction('wp_unslash', ['return_arg' => 0]);
+        WP_Mock::wpFunction('esc_attr', ['return_arg' => 0]);
 
         // Create nonce
         $id         = 'my-nonce';
