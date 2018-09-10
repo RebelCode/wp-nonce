@@ -4,51 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a260b04ed5b78823f830acf88ef7410",
+    "content-hash": "b10cd38f31678a9f9702dbaebac212df",
     "packages": [
-        {
-            "name": "dhii/block-interface",
-            "version": "dev-task/initial-interface",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Dhii/block-interface.git",
-                "reference": "c398d9f37499b68d218b09e51de1ca08c9aa50d5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/block-interface/zipball/c398d9f37499b68d218b09e51de1ca08c9aa50d5",
-                "reference": "c398d9f37499b68d218b09e51de1ca08c9aa50d5",
-                "shasum": ""
-            },
-            "require": {
-                "dhii/stringable-interface": "^0.1",
-                "php": "^5.3 | ^7.0"
-            },
-            "require-dev": {
-                "codeclimate/php-test-reporter": "<=0.3.2",
-                "dhii/php-cs-fixer-config": "dev-php-5.3",
-                "phpunit/phpunit": "^4.8",
-                "ptrofimov/xpmock": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Dhii\\Block\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dhii Team",
-                    "email": "development@dhii.co"
-                }
-            ],
-            "description": "Interfaces for output blocks.",
-            "time": "2017-06-30T12:17:03+00:00"
-        },
         {
             "name": "dhii/data-identifiable-interface",
             "version": "v0.1",
@@ -141,16 +98,16 @@
         },
         {
             "name": "dhii/factory-interface",
-            "version": "dev-develop",
+            "version": "v0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/factory-interface.git",
-                "reference": "93150912e4c3e3e63cc655a8610d862dad323e18"
+                "reference": "b8d217aec8838e64ccaa770cb03dc164bf6f0515"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/factory-interface/zipball/93150912e4c3e3e63cc655a8610d862dad323e18",
-                "reference": "93150912e4c3e3e63cc655a8610d862dad323e18",
+                "url": "https://api.github.com/repos/Dhii/factory-interface/zipball/b8d217aec8838e64ccaa770cb03dc164bf6f0515",
+                "reference": "b8d217aec8838e64ccaa770cb03dc164bf6f0515",
                 "shasum": ""
             },
             "require": {
@@ -168,7 +125,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-develop": "0.2.x-dev"
+                    "dev-develop": "0.1.x-dev"
                 }
             },
             "autoload": {
@@ -187,11 +144,11 @@
                 }
             ],
             "description": "Interfaces for working with factories.",
-            "time": "2018-08-29T11:24:03+00:00"
+            "time": "2018-08-29T11:15:09+00:00"
         },
         {
             "name": "dhii/i18n-helper-base",
-            "version": "dev-develop",
+            "version": "v0.1-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/i18n-helper-base.git",
@@ -280,6 +237,60 @@
             ],
             "description": "Interfaces for internationalization.",
             "time": "2017-03-15T16:01:39+00:00"
+        },
+        {
+            "name": "dhii/output-renderer-interface",
+            "version": "v0.3-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dhii/output-renderer-interface.git",
+                "reference": "de48ea589e5e1caa1191f588a3aea7623ccbaf44"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dhii/output-renderer-interface/zipball/de48ea589e5e1caa1191f588a3aea7623ccbaf44",
+                "reference": "de48ea589e5e1caa1191f588a3aea7623ccbaf44",
+                "shasum": ""
+            },
+            "require": {
+                "dhii/exception-interface": "^0.1 | ^0.2",
+                "dhii/factory-interface": "^0.1-alpha2",
+                "dhii/stringable-interface": "^0.1",
+                "php": "^5.3 | ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "dhii/php-cs-fixer-config": "dev-php-5.3",
+                "phpunit/phpunit": "4.*",
+                "psr/container": "^1.0",
+                "ptrofimov/xpmock": "^1.1"
+            },
+            "suggest": {
+                "dhii/container-helper-base": "Useful for reading data from different context types uniformly"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dhii\\Output\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dhii Team",
+                    "email": "development@dhii.co"
+                }
+            ],
+            "description": "An interface for objects that can perform rendering.",
+            "time": "2018-06-02T18:49:35+00:00"
         },
         {
             "name": "dhii/stringable-interface",
@@ -460,12 +471,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/wp-nonce-interface.git",
-                "reference": "9eb5d265589a6efc56377efaf76d17902edece2d"
+                "reference": "0cf97535c2c03c1fbca76ac69e3e6868c49fcb36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/wp-nonce-interface/zipball/9eb5d265589a6efc56377efaf76d17902edece2d",
-                "reference": "9eb5d265589a6efc56377efaf76d17902edece2d",
+                "url": "https://api.github.com/repos/RebelCode/wp-nonce-interface/zipball/0cf97535c2c03c1fbca76ac69e3e6868c49fcb36",
+                "reference": "0cf97535c2c03c1fbca76ac69e3e6868c49fcb36",
                 "shasum": ""
             },
             "require": {
@@ -501,7 +512,7 @@
                 }
             ],
             "description": "Interfaces for an object oriented API for WordPress nonces.",
-            "time": "2018-09-10T09:32:31+00:00"
+            "time": "2018-09-10T10:39:29+00:00"
         }
     ],
     "packages-dev": [
@@ -2606,9 +2617,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "rebelcode/wp-nonce-interface": 20,
-        "dhii/i18n-helper-base": 20,
-        "dhii/factory-interface": 20,
-        "dhii/block-interface": 20,
         "dhii/php-cs-fixer-config": 20
     },
     "prefer-stable": true,
