@@ -1,6 +1,6 @@
 <?php
 
-namespace RebelCode\WordPress\Nonce\UnitTest\Block;
+namespace RebelCode\WordPress\Nonce\FuncTest\Block;
 
 use RebelCode\WordPress\Nonce\Block\NonceFieldBlock;
 use RebelCode\WordPress\Nonce\NonceInterface;

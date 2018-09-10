@@ -1,6 +1,6 @@
 <?php
 
-namespace RebelCode\WordPress\Nonce\Block\FuncTest;
+namespace RebelCode\WordPress\Nonce\Block\UnitTest;
 
 use Xpmock\TestCase;
 use RebelCode\WordPress\Nonce\Block\AbstractNonceFieldBlock;

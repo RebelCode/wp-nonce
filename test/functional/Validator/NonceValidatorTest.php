@@ -1,6 +1,6 @@
 <?php
 
-namespace unit\Validator;
+namespace RebelCode\WordPress\Nonce\FuncTest\Validator;
 
 use RebelCode\WordPress\Nonce\Validator\NonceValidator;
 use WP_Mock;

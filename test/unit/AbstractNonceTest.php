@@ -1,11 +1,8 @@
 <?php
 
-namespace RebelCode\WordPress\Nonce\FuncTest;
+namespace RebelCode\WordPress\Nonce\UnitTest;
 
 use Xpmock\TestCase;
-
-
-use RebelCode\WordPress\Nonce\AbstractNonce;
 
 /**
  * Tests {@see RebelCode\WordPress\Nonce\AbstractNonce}.

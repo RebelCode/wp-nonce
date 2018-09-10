@@ -1,7 +1,6 @@
 <?php
 
-
-namespace RebelCode\WordPress\Nonce\Validator\FuncTest;
+namespace RebelCode\WordPress\Nonce\Validator\UnitTest;
 
 use Xpmock\TestCase;
 use RebelCode\WordPress\Nonce\Validator\AbstractNonceValidator;

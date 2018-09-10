@@ -1,6 +1,6 @@
 <?php
 
-namespace RebelCode\WordPress\Nonce\Factory\FuncTest;
+namespace RebelCode\WordPress\Nonce\Factory\UnitTest;
 
 use WP_Mock;
 use Xpmock\TestCase;

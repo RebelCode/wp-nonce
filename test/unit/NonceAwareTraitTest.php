@@ -1,10 +1,9 @@
 <?php
 
-namespace RebelCode\WordPress\Nonce\FuncTest;
+namespace RebelCode\WordPress\Nonce\UnitTest;
 
 use RebelCode\WordPress\Nonce\NonceInterface;
 use Xpmock\TestCase;
-use RebelCode\WordPress\Nonce\NonceAwareTrait;
 
 /**
  * Tests {@see RebelCode\WordPress\Nonce\NonceAwareTrait}.
