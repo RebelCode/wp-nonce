@@ -3,6 +3,7 @@
 namespace RebelCode\WordPress\Nonce\UnitTest\Block;
 
 use RebelCode\WordPress\Nonce\Block\NonceFieldBlock;
+use RebelCode\WordPress\Nonce\NonceInterface;
 use Xpmock\TestCase;
 use \WP_Mock;
 
