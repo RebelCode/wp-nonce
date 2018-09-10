@@ -70,7 +70,7 @@ class NonceFieldBlockTest extends TestCase
         );
 
         $this->assertInstanceOf(
-            'Dhii\\Block\\BlockInterface', $subject,
+            'Dhii\\Output\\BlockInterface', $subject,
             'Subject does not implement the expected interface.'
         );
     }
