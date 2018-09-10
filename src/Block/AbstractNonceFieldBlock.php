@@ -11,6 +11,7 @@ use RebelCode\WordPress\Nonce\NonceAwareTrait;
  */
 abstract class AbstractNonceFieldBlock
 {
+    /* @since [*next-version*] */
     use NonceAwareTrait;
 
     /**
