@@ -39,4 +39,14 @@ class NonceFactory extends AbstractNonceFactory implements NonceFactoryInterface
     {
         return new Nonce($id, $code);
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    protected function _generateNonceCode($id)
+    {
+        return \wp_create_nonce($id);
+    }
 }

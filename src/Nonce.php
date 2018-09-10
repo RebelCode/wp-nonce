@@ -2,12 +2,14 @@
 
 namespace RebelCode\WordPress\Nonce;
 
+use Dhii\Util\String\StringableInterface as Stringable;
+
 /**
  * A simple, default implementation of a WordPress nonce.
  *
  * @since [*next-version*]
  */
-class Nonce extends AbstractNonce implements NonceInterface
+class Nonce extends AbstractNonce implements NonceInterface, Stringable
 {
     /**
      * Constructor.
@@ -20,7 +22,7 @@ class Nonce extends AbstractNonce implements NonceInterface
     public function __construct($id, $code)
     {
         $this->_setId($id)
-            ->_setCode($code);
+             ->_setCode($code);
     }
 
     /**
@@ -41,5 +43,15 @@ class Nonce extends AbstractNonce implements NonceInterface
     public function getCode()
     {
         return $this->_getCode();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @since [*next-version*]
+     */
+    public function __toString()
+    {
+        return (string) $this->_getCode();
     }
 }

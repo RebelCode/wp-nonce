@@ -1,9 +1,11 @@
 <?php
 
-namespace RebelCode\WordPress\Nonce\Block\FuncTest;
+namespace RebelCode\WordPress\Nonce\Block\UnitTest;
 
-use Xpmock\TestCase;
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
 use RebelCode\WordPress\Nonce\Block\AbstractNonceFieldBlock;
+use RebelCode\WordPress\Nonce\NonceInterface;
+use Xpmock\TestCase;
 
 /**
  * Tests {@see RebelCode\WordPress\Nonce\Block\AbstractNonceFieldBlock}.
@@ -31,20 +33,19 @@ class AbstractNonceFieldBlockTest extends TestCase
      *
      * @since [*next-version*]
      *
-     * @param NonceInterface|null $nonce      A nonce instance.
-     * @param string              $refererUrl The referer URL.
+     * @param NonceInterface|null $nonce A nonce instance.
      *
-     * @return AbstractNonceFieldBlock
+     * @return AbstractNonceFieldBlock|MockObject
      */
-    public function createInstance($nonce = null, $refererUrl = '') {
-        if ($nonce === null) {
-            $nonce = $this->createNonce();
-        }
+    public function createInstance($nonce = null)
+    {
+        $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
+                     ->setMethods(['_getNonce', '_render'])
+                     ->getMockForAbstractClass();
 
-        $mock = $this->mock(static::TEST_SUBJECT_CLASSNAME)
-            ->_getNonce($nonce)
-            ->_render()
-            ->new();
+        if ($nonce === null) {
+            $mock->method('_getNonce')->willReturn($nonce);
+        }
 
         return $mock;
     }
@@ -62,9 +63,9 @@ class AbstractNonceFieldBlockTest extends TestCase
     public function createNonce($id = '', $code = '')
     {
         return $this->mock(static::NONCE_CLASSNAME)
-            ->getId($id)
-            ->getCode($code)
-            ->new();
+                    ->getId($id)
+                    ->getCode($code)
+                    ->new();
     }
 
     /**
@@ -92,9 +93,11 @@ class AbstractNonceFieldBlockTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $reflect->_setFieldName($fieldName = 'my_field');
+        $expected = uniqid('field-');
 
-        $this->assertEquals($fieldName, $reflect->_getFieldName());
+        $reflect->_setFieldName($expected);
+
+        $this->assertEquals($expected, $reflect->_getFieldName());
     }
 
     /**
@@ -107,9 +110,11 @@ class AbstractNonceFieldBlockTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $reflect->_setRefererUrl($referer = 'my://special/referer/url');
+        $expected = uniqid('referer-');
 
-        $this->assertEquals($referer, $reflect->_getRefererUrl());
+        $reflect->_setRefererUrl($expected);
+
+        $this->assertEquals($expected, $reflect->_getRefererUrl());
     }
 
     /**
@@ -122,8 +127,10 @@ class AbstractNonceFieldBlockTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $reflect->_setRefererFieldName($refererFieldName = 'my_referer');
+        $expected = uniqid('referer-field-');
 
-        $this->assertEquals($refererFieldName, $reflect->_getRefererFieldName());
+        $reflect->_setRefererFieldName($expected);
+
+        $this->assertEquals($expected, $reflect->_getRefererFieldName());
     }
 }

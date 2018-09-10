@@ -1,6 +1,6 @@
 <?php
 
-namespace unit\Factory;
+namespace RebelCode\WordPress\Nonce\FuncTest\Factory;
 
 use RebelCode\WordPress\Nonce\Factory\NonceFactory;
 use WP_Mock;
@@ -69,7 +69,7 @@ class NonceFactoryTest extends TestCase
             'id' => $id
         ];
 
-        WP_Mock::userFunction('wp_create_nonce', [
+        WP_Mock::wpFunction('wp_create_nonce', [
             'times'  => 1,
             'args'   => $id,
             'return' => $code

@@ -25,6 +25,12 @@ class NonceTest extends \PHPUnit_Framework_TestCase
             $subject,
             'Subject does not implement expected interface.'
         );
+
+        $this->assertInstanceOf(
+            'Dhii\\Util\\String\\StringableInterface',
+            $subject,
+            'Subject does not implement expected interface.'
+        );
     }
 
     /**
@@ -49,5 +55,17 @@ class NonceTest extends \PHPUnit_Framework_TestCase
         $subject = new Nonce('', $code = '12345abcde');
 
         $this->assertEquals($code, $subject->getCode());
+    }
+
+    /**
+     * Tests the string conversion to ensure that the resulting string is equal to the nonce code.
+     *
+     * @since [*next-version*]
+     */
+    public function testToString()
+    {
+        $subject = new Nonce('', $code = '12345abcde');
+
+        $this->assertEquals($code, (string) $subject);
     }
 }

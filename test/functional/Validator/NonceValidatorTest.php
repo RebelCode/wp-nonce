@@ -1,6 +1,6 @@
 <?php
 
-namespace unit\Validator;
+namespace RebelCode\WordPress\Nonce\FuncTest\Validator;
 
 use RebelCode\WordPress\Nonce\Validator\NonceValidator;
 use WP_Mock;
@@ -86,7 +86,7 @@ class NonceValidatorTest extends TestCase
         $code  = '1234567890';
         $nonce = $this->createNonce($id, $code);
 
-        WP_Mock::userFunction('wp_verify_nonce', [
+        WP_Mock::wpFunction('wp_verify_nonce', [
             'times'  => 1,
             'args'   => [$code, $id],
             'return' => true
@@ -110,7 +110,7 @@ class NonceValidatorTest extends TestCase
         $code  = '1234567890';
         $nonce = $this->createNonce($id, $code);
 
-        WP_Mock::userFunction('wp_verify_nonce', [
+        WP_Mock::wpFunction('wp_verify_nonce', [
             'times'  => 1,
             'args'   => [$code, $id],
             'return' => false

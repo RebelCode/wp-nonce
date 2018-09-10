@@ -1,10 +1,12 @@
 <?php
 
-namespace RebelCode\WordPress\Nonce\Factory\FuncTest;
+namespace RebelCode\WordPress\Nonce\Factory\UnitTest;
 
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use RebelCode\WordPress\Nonce\Factory\AbstractNonceFactory;
+use RebelCode\WordPress\Nonce\NonceInterface;
 use WP_Mock;
 use Xpmock\TestCase;
-use RebelCode\WordPress\Nonce\Factory\AbstractNonceFactory;
 
 /**
  * Tests {@see RebelCode\WordPress\Nonce\Factory\AbstractNonceFactory}.
@@ -14,7 +16,7 @@ use RebelCode\WordPress\Nonce\Factory\AbstractNonceFactory;
 class AbstractNonceFactoryTest extends TestCase
 {
     /**
-     * The classname of the test subject.
+     * The class name of the test subject.
      *
      * @since [*next-version*]
      */
@@ -52,17 +54,13 @@ class AbstractNonceFactoryTest extends TestCase
      *
      * @since [*next-version*]
      *
-     * @return AbstractNonceFactory
+     * @return AbstractNonceFactory|MockObject
      */
     public function createInstance()
     {
-        $me = $this;
-
-        $mock = $this->mock(static::TEST_SUBJECT_CLASSNAME)
-            ->_createNonceInstance(function($id, $code) use ($me) {
-                return $me->createNonce($id, $code);
-            })
-            ->new();
+        $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
+                     ->setMethods(['_createNonceInstance', '_generateNonceCode'])
+                     ->getMockForAbstractClass();
 
         return $mock;
     }
@@ -80,9 +78,9 @@ class AbstractNonceFactoryTest extends TestCase
     public function createNonce($id = '', $code = '')
     {
         return $this->mock(static::NONCE_CLASSNAME)
-            ->getId($id)
-            ->getCode($code)
-            ->new();
+                    ->getId($id)
+                    ->getCode($code)
+                    ->new();
     }
 
     /**
@@ -101,11 +99,12 @@ class AbstractNonceFactoryTest extends TestCase
     }
 
     /**
-     * Tests the nonce creation method to ensure that a valid nonce instance is created.
+     * Tests the nonce creation method without a code to ensure that a valid nonce instance is created with a generated
+     * nonce code.
      *
      * @since [*next-version*]
      */
-    public function testMake()
+    public function testMakeNoCode()
     {
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
@@ -113,14 +112,58 @@ class AbstractNonceFactoryTest extends TestCase
         $id     = 'test_nonce';
         $code   = '1234567890';
         $config = [
-            'id' => $id
+            'id' => $id,
         ];
 
-        WP_Mock::userFunction('wp_create_nonce', [
-            'times'  => 1,
-            'args'   => $id,
-            'return' => $code
-        ]);
+        $subject->expects($this->once())
+            ->method('_generateNonceCode')
+            ->with($id)
+            ->willReturn($code);
+
+        $subject->expects($this->once())
+                ->method('_createNonceInstance')
+                ->with($id, $code)
+                ->willReturn($this->createNonce($id, $code));
+
+        $nonce = $reflect->_make($config);
+
+        $this->assertInstanceOf(
+            static::NONCE_CLASSNAME, $nonce,
+            'Created instance is not a valid nonce.'
+        );
+
+        $this->assertEquals($id, $nonce->getId(),
+            'Created nonce does not have the given ID.');
+
+        $this->assertEquals($code, $nonce->getCode(),
+            'Created nonce does not have the expected code.');
+    }
+
+    /**
+     * Tests the nonce creation method with a code to ensure that a valid nonce instance is created with the code taken
+     * from the argument config.
+     *
+     * @since [*next-version*]
+     */
+    public function testMakeWithCode()
+    {
+        $subject = $this->createInstance();
+        $reflect = $this->reflect($subject);
+
+        $id     = 'test_nonce';
+        $code   = '1234567890';
+        $config = [
+            'id'   => $id,
+            'code' => $code,
+        ];
+
+        $subject->expects($this->never())
+                ->method('_generateNonceCode');
+
+        $subject->expects($this->once())
+                ->method('_createNonceInstance')
+                ->with($id, $code)
+                ->willReturn($this->createNonce($id, $code));
 
         $nonce = $reflect->_make($config);
 

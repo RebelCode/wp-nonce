@@ -13,6 +13,7 @@ use RebelCode\WordPress\Nonce\NonceInterface;
  */
 abstract class AbstractNonceValidator extends AbstractValidatorBase
 {
+    /* @since [*next-version*] */
     use StringTranslatingTrait;
 
     /**

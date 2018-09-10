@@ -13,19 +13,18 @@
     "prefer-stable": true,
     "require": {
         "php": "^5.4 | ^7.0",
-        "rebelcode/wp-nonce-interface": "dev-develop",
-        "dhii/validation-interface": "^0.1.0",
-        "dhii/validation-base": "^0.1.0",
-        "dhii/i18n-helper-base": "dev-develop",
-        "dhii/factory-interface": "dev-develop",
-        "dhii/block-interface": "dev-task/initial-interface"
+        "rebelcode/wp-nonce-interface": "^0.1-alpha1",
+        "dhii/validation-base": "^0.1 | ^0.2-alpha1",
+        "dhii/i18n-helper-base": "^0.1-alpha1",
+        "dhii/factory-interface": "^0.1",
+        "dhii/output-renderer-interface": "^0.3-alpha2"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
         "ptrofimov/xpmock": "^1.1",
         "dhii/php-cs-fixer-config": "dev-master",
         "codeclimate/php-test-reporter": "<=0.3.2",
-        "10up/wp_mock": "dev-dev"
+        "10up/wp_mock": "^0.1.1"
     },
     "autoload": {
         "psr-4": {
@@ -36,10 +35,9 @@
         "test": "phpunit",
         "csfix": "php-cs-fixer fix -vvv"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/RebelCode/wp-nonce-interface"
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "0.1.x-dev"
         }
-    ]
+    }
 }

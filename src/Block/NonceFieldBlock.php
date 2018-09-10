@@ -2,7 +2,7 @@
 
 namespace RebelCode\WordPress\Nonce\Block;
 
-use Dhii\Block\BlockInterface;
+use Dhii\Output\BlockInterface;
 use RebelCode\WordPress\Nonce\NonceAwareInterface;
 use RebelCode\WordPress\Nonce\NonceInterface;
 
@@ -40,9 +40,9 @@ class NonceFieldBlock extends AbstractNonceFieldBlock implements BlockInterface,
         $refererUrl = null
     ) {
         $this->_setNonce($nonce)
-            ->_setFieldName($fieldName)
-            ->_setRefererUrl($refererUrl)
-            ->_setRefererFieldName(static::REFERER_FIELD_NAME);
+             ->_setFieldName($fieldName)
+             ->_setRefererUrl($refererUrl)
+             ->_setRefererFieldName(static::REFERER_FIELD_NAME);
     }
 
     /**
