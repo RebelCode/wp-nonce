@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b10cd38f31678a9f9702dbaebac212df",
+    "content-hash": "1054cf77c67b392e93e99144d32202d9",
     "packages": [
         {
             "name": "dhii/data-identifiable-interface",
@@ -467,21 +467,21 @@
         },
         {
             "name": "rebelcode/wp-nonce-interface",
-            "version": "dev-task/improvements",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RebelCode/wp-nonce-interface.git",
-                "reference": "0cf97535c2c03c1fbca76ac69e3e6868c49fcb36"
+                "reference": "d766b97af37f205b81167b6f85c9d6978dc58b46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RebelCode/wp-nonce-interface/zipball/0cf97535c2c03c1fbca76ac69e3e6868c49fcb36",
-                "reference": "0cf97535c2c03c1fbca76ac69e3e6868c49fcb36",
+                "url": "https://api.github.com/repos/RebelCode/wp-nonce-interface/zipball/d766b97af37f205b81167b6f85c9d6978dc58b46",
+                "reference": "d766b97af37f205b81167b6f85c9d6978dc58b46",
                 "shasum": ""
             },
             "require": {
-                "dhii/data-identifiable-interface": "^0.1.0",
-                "dhii/validation-interface": "^0.1.0",
+                "dhii/data-identifiable-interface": "^0.1",
+                "dhii/factory-interface": "^0.1",
                 "php": "^5.3 | ^7.0"
             },
             "require-dev": {
@@ -512,7 +512,7 @@
                 }
             ],
             "description": "Interfaces for an object oriented API for WordPress nonces.",
-            "time": "2018-09-10T10:39:29+00:00"
+            "time": "2018-09-10T13:12:15+00:00"
         }
     ],
     "packages-dev": [
@@ -2616,7 +2616,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "rebelcode/wp-nonce-interface": 20,
         "dhii/php-cs-fixer-config": 20
     },
     "prefer-stable": true,

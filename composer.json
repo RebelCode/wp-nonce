@@ -13,9 +13,8 @@
     "prefer-stable": true,
     "require": {
         "php": "^5.4 | ^7.0",
-        "rebelcode/wp-nonce-interface": "dev-task/improvements",
-        "dhii/validation-interface": "^0.1.0",
-        "dhii/validation-base": "^0.1.0",
+        "rebelcode/wp-nonce-interface": "^0.1-alpha1",
+        "dhii/validation-base": "^0.1 | ^0.2-alpha1",
         "dhii/i18n-helper-base": "^0.1-alpha1",
         "dhii/factory-interface": "^0.1",
         "dhii/output-renderer-interface": "^0.3-alpha2"
