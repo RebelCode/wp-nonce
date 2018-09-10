@@ -47,10 +47,7 @@ abstract class AbstractNonceFactory
      
      * @return string The generated nonce code.
      */
-    protected function _generateNonceCode($id)
-    {
-        return \wp_create_nonce($id);
-    }
+    abstract protected function _generateNonceCode($id);
 
     /**
      * Creates a nonce instance.
