@@ -39,7 +39,7 @@ abstract class AbstractNonceFactory
      * @since [*next-version*]
      *
      * @param string $id The ID of the nonce for which a code will be generated.
-     
+     *
      * @return string The generated nonce code.
      */
     abstract protected function _generateNonceCode($id);
