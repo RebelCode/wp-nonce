@@ -22,11 +22,13 @@ abstract class AbstractNonceFactory
      */
     protected function _make($config = [])
     {
-        $id = isset($config[static::K_DELEGATE_CONFIG_ID])
-            ? $config[static::K_DELEGATE_CONFIG_ID]
+        $id = isset($config[NonceFactoryInterface::K_CONFIG_ID])
+            ? $config[NonceFactoryInterface::K_CONFIG_ID]
             : '';
 
-        $code = $this->_generateNonceCode($id);
+        $code = isset($config[NonceFactoryInterface::K_CONFIG_CODE])
+            ? $config[NonceFactoryInterface::K_CONFIG_CODE]
+            : $this->_generateNonceCode($id);
 
         return $this->_createNonceInstance($id, $code);
     }
